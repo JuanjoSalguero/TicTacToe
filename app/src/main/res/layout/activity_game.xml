@@ -71,13 +71,27 @@
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn8"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:backgroundTint="#282828"
         android:text="Reset"
         android:textColor="#03948a"
         android:textSize="23dp">
 
     </Button>
+
+    <ImageView
+        android:id="@+id/locked"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/btn9"
+        android:layout_toRightOf="@+id/reset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="103dp"
+        android:layout_marginLeft="30dp"
+        app:srcCompat="@drawable/locked">
+
+    </ImageView>
+
 
     <RelativeLayout
         android:id="@+id/btn8"
