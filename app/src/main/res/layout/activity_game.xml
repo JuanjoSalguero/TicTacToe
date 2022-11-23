@@ -66,17 +66,17 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/reset"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/btn8"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn8"
         android:layout_marginTop="80dp"
+        android:backgroundTint="#282828"
         android:text="Reset"
-        android:id="@+id/reset"
-        android:textSize="23dp"
         android:textColor="#03948a"
-        android:backgroundTint="#282828">
-        
+        android:textSize="23dp">
+
     </Button>
 
     <RelativeLayout
