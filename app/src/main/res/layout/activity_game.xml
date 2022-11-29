@@ -28,7 +28,7 @@
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="8dp"
-        android:background="#03948a"
+        android:background="@color/own_blue"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/btn5"
         android:layout_marginBottom="8dp">
@@ -38,7 +38,7 @@
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="8dp"
-        android:background="#03948a"
+        android:background="@color/own_blue"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn5"
         android:layout_marginTop="8dp">
@@ -48,7 +48,7 @@
     <RelativeLayout
         android:layout_width="8dp"
         android:layout_height="350dp"
-        android:background="#03948a"
+        android:background="@color/own_blue"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btn5"
         android:layout_marginRight="-14dp">
@@ -58,7 +58,7 @@
     <RelativeLayout
         android:layout_width="8dp"
         android:layout_height="350dp"
-        android:background="#03948a"
+        android:background="@color/own_blue"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/btn5"
         android:layout_marginLeft="-14dp">
@@ -74,7 +74,7 @@
         android:layout_marginTop="90dp"
         android:backgroundTint="#282828"
         android:text="Reset"
-        android:textColor="#03948a"
+        android:textColor="@color/own_blue"
         android:textSize="23dp">
 
     </Button>
