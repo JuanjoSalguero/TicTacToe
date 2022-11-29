@@ -15,7 +15,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void goBack(View view){
-        Intent mainActivity = new Intent(this, MainActivity.class);
-        startActivity(mainActivity);
+        finish();
     }
 }
