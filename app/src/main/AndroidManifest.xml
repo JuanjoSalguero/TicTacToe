@@ -13,6 +13,13 @@
         android:theme="@style/Theme.TicTacToe"
         tools:targetApi="31">
         <activity
+            android:name=".SingleplayerGame"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MatchResult"
             android:exported="false">
             <meta-data
@@ -22,7 +29,6 @@
         <activity
             android:name=".PlayersWindow"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

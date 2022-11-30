@@ -15,12 +15,15 @@ import java.util.List;
 public class MultiplayerGame extends AppCompatActivity {
 
     private final List<int[]> combinationList = new ArrayList<>();
-    private int [] boxPositions = {0, 0, 0, 0, 0, 0, 0, 0, 0};  // 9 zero
+    private int [] boxPositions = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int playerTurn = 1;
     private int totalSelectedBoxes = 1;
     private boolean locked = false;
+    private int scoreOne = 0;
+    private int scoreTwo = 0;
 
     private TextView playerOneName, playerTwoName;
+    private TextView playerOneScore, playerTwoScore;
     private LinearLayout playerOneLayout, playerTwoLayout;
     private ImageView buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9;
     private ImageView lock;
@@ -31,6 +34,9 @@ public class MultiplayerGame extends AppCompatActivity {
 
         playerOneName = findViewById(R.id.playerOneName);
         playerTwoName = findViewById(R.id.playerTwoName);
+
+        playerOneScore = findViewById(R.id.playerOneScore);
+        playerTwoScore = findViewById(R.id.playerTwoScore);
 
         playerOneLayout = findViewById(R.id.playerOneLayout);
         playerTwoLayout = findViewById(R.id.playerTwoLayout);
@@ -157,6 +163,8 @@ public class MultiplayerGame extends AppCompatActivity {
                         + " has won!", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
+                scoreOne++;
+                playerOneScore.setText(Integer.toString(scoreOne));
             } else if(totalSelectedBoxes == 9) {
                 MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
@@ -172,6 +180,8 @@ public class MultiplayerGame extends AppCompatActivity {
                         + " has won!", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
+                scoreTwo++;
+                playerTwoScore.setText(Integer.toString(scoreTwo));
             } else if(totalSelectedBoxes == 9) {
                 MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
