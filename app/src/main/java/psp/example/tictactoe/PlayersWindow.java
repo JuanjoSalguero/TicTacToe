@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddPlayers extends AppCompatActivity {
+public class PlayersWindow extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_players);
+        setContentView(R.layout.activity_players_window);
 
         // IDs player one and player two
         EditText playerOne = findViewById(R.id.playerOne);
@@ -29,12 +29,13 @@ public class AddPlayers extends AppCompatActivity {
 
                 // If any player name is empty, it will not start and toast message
                 if (getPlayerOneName.isEmpty() || getPlayerTwoName.isEmpty()) {
-                    Toast.makeText(AddPlayers.this, "Please enter player name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlayersWindow.this, "Please enter player name", Toast.LENGTH_SHORT).show();
                 } else { // If the names are filled, game will start (go to game activity)
-                    Intent play = new Intent(AddPlayers.this, GameActivity.class);
+                    Intent play = new Intent(PlayersWindow.this, MultiplayerGame.class);
                     play.putExtra("playerOne", getPlayerOneName);
                     play.putExtra("playerTwo", getPlayerTwoName);
                     startActivity(play);
+                    finish();
                 }
             }
         });

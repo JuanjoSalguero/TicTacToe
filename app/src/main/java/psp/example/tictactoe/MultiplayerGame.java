@@ -12,23 +12,25 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameActivity extends AppCompatActivity {
+public class MultiplayerGame extends AppCompatActivity {
 
     private final List<int[]> combinationList = new ArrayList<>();
     private int [] boxPositions = {0, 0, 0, 0, 0, 0, 0, 0, 0};  // 9 zero
     private int playerTurn = 1;
     private int totalSelectedBoxes = 1;
+    private boolean locked = false;
 
     private TextView playerOneName, playerTwoName;
     private LinearLayout playerOneLayout, playerTwoLayout;
     private ImageView buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9;
+    private ImageView lock;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_multiplayer_game);
 
         playerOneName = findViewById(R.id.playerOneName);
-        TextView playerTwoName = findViewById(R.id.playerTwoName);
+        playerTwoName = findViewById(R.id.playerTwoName);
 
         playerOneLayout = findViewById(R.id.playerOneLayout);
         playerTwoLayout = findViewById(R.id.playerTwoLayout);
@@ -42,6 +44,8 @@ public class GameActivity extends AppCompatActivity {
         buttonImage7 = findViewById(R.id.buttonImage7);
         buttonImage8 = findViewById(R.id.buttonImage8);
         buttonImage9 = findViewById(R.id.buttonImage9);
+
+        lock = (ImageView)findViewById(R.id.locked);
 
         combinationList.add(new int[] {0,1,2});
         combinationList.add(new int[] {3,4,5});
@@ -58,78 +62,88 @@ public class GameActivity extends AppCompatActivity {
         playerOneName.setText(getPlayerOneName);
         playerTwoName.setText(getPlayerTwoName);
 
+
         buttonImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(0)){
+                if (isBoxSelectable(0) && locked == false){
                     performAction((ImageView) view, 0);
                 }
             }
         });
+
         buttonImage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(1)){
+                if (isBoxSelectable(1) && locked == false){
                     performAction((ImageView) view, 1);
                 }
             }
         });
+
         buttonImage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(2)){
+                if (isBoxSelectable(2) && locked == false){
                     performAction((ImageView) view, 2);
                 }
             }
         });
+
         buttonImage4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(3)){
+                if (isBoxSelectable(3) && locked == false){
                     performAction((ImageView) view, 3);
                 }
             }
         });
+
         buttonImage5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(4)){
+                if (isBoxSelectable(4) && locked == false){
                     performAction((ImageView) view, 4);
                 }
             }
         });
+
         buttonImage6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(5)){
+                if (isBoxSelectable(5) && locked == false){
                     performAction((ImageView) view, 5);
                 }
             }
         });
+
         buttonImage7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(6)){
+                if (isBoxSelectable(6) && locked == false){
                     performAction((ImageView) view, 6);
                 }
             }
         });
+
         buttonImage8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(7)){
+                if (isBoxSelectable(7) && locked == false){
                     performAction((ImageView) view, 7);
                 }
             }
         });
+
         buttonImage9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isBoxSelectable(8)){
+                if (isBoxSelectable(8) && locked == false){
                     performAction((ImageView) view, 8);
                 }
             }
         });
+
     }
 
     private void performAction(ImageView  imageView, int selectedBoxPosition) {
@@ -139,12 +153,12 @@ public class GameActivity extends AppCompatActivity {
         if (playerTurn == 1) {
             imageView.setImageResource(R.drawable.cross);
             if (checkResults()) {
-                ResultDialog resultDialog = new ResultDialog(GameActivity.this, playerOneName.getText().toString()
-                        + " has won!", GameActivity.this);
+                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, playerOneName.getText().toString()
+                        + " has won!", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
             } else if(totalSelectedBoxes == 9) {
-                ResultDialog resultDialog = new ResultDialog(GameActivity.this, "Match Draw", GameActivity.this);
+                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
             } else {
@@ -154,12 +168,12 @@ public class GameActivity extends AppCompatActivity {
         } else {
             imageView.setImageResource(R.drawable.circle);
             if (checkResults()) {
-                ResultDialog resultDialog = new ResultDialog(GameActivity.this, playerTwoName.getText().toString()
-                        + " has won!", GameActivity.this);
+                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, playerTwoName.getText().toString()
+                        + " has won!", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
             } else if(totalSelectedBoxes == 9) {
-                ResultDialog resultDialog = new ResultDialog(GameActivity.this, "Match Draw", GameActivity.this);
+                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
                 resultDialog.setCancelable(false);
                 resultDialog.show();
             } else {
@@ -240,5 +254,17 @@ public class GameActivity extends AppCompatActivity {
     // Method to go back
     public void goBack(View view){
         finish();
+    }
+
+    // Method to lock the match
+    public void lockOrUnlock(View view){
+        if (locked == false) {
+            locked = true;
+            lock.setImageResource(R.drawable.unlocked);
+        }
+        else{
+            locked = false;
+            lock.setImageResource(R.drawable.locked);
+        }
     }
 }

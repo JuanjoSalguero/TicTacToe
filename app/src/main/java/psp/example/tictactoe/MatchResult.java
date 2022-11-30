@@ -1,7 +1,7 @@
 package psp.example.tictactoe;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ResultDialog extends Dialog {
+public class MatchResult extends Dialog {
 
     private final String message;
-    private final GameActivity gameActivity;
+    private final MultiplayerGame gameActivity;
 
-    public ResultDialog(@NonNull Context context, String message, GameActivity gameActivity) {
+    public MatchResult(@NonNull Context context, String message, MultiplayerGame gameActivity) {
         super(context);
         this.message = message;
         this.gameActivity = gameActivity;
@@ -23,7 +23,7 @@ public class ResultDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_dialog);
+        setContentView(R.layout.activity_match_result);
 
         TextView messageText = findViewById(R.id.messageText);
         Button startAgainButton = findViewById(R.id.startAgainButton);

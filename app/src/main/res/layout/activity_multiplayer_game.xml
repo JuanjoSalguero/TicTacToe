@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#383838"
     android:onClick="resetMatch"
-    tools:context=".GameActivity">
+    tools:context=".MultiplayerGame">
 
     <RelativeLayout
         android:id="@+id/btn5"
@@ -90,6 +90,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="103dp"
         android:layout_toRightOf="@+id/reset"
+        android:onClick="lockOrUnlock"
         app:srcCompat="@drawable/locked">
 
     </ImageView>

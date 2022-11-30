@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultDialog">
+    tools:context=".MatchResult">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/messageText"
             android:gravity="center"
-            android:text="Results"
+            android:text="Match Result"
             android:textColor="#282828"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
@@ -31,7 +31,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:backgroundTint="#282828"
-            android:text="Start Again"
+            android:text="Rematch"
             android:layout_margin="20dp"
             android:textColor="@color/own_blue"
             app:cornerRadius = "20dp"/>
