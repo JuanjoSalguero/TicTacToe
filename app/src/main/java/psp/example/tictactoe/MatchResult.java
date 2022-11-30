@@ -12,12 +12,21 @@ import android.widget.TextView;
 public class MatchResult extends Dialog {
 
     private final String message;
-    private final MultiplayerGame gameActivity;
+    private final MultiplayerGame multiplayerGame;
+    private final SingleplayerGame singleplayerGame;
 
-    public MatchResult(@NonNull Context context, String message, MultiplayerGame gameActivity) {
+    public MatchResult(@NonNull Context context, String message, MultiplayerGame multiplayerGame) {
         super(context);
         this.message = message;
-        this.gameActivity = gameActivity;
+        this.multiplayerGame = multiplayerGame;
+        this.singleplayerGame = null;
+    }
+
+    public MatchResult(@NonNull Context context, String message, SingleplayerGame singleplayerGame) {
+        super(context);
+        this.message = message;
+        this.singleplayerGame = singleplayerGame;
+        this.multiplayerGame = null;
     }
 
     @Override
@@ -26,14 +35,15 @@ public class MatchResult extends Dialog {
         setContentView(R.layout.activity_match_result);
 
         TextView messageText = findViewById(R.id.messageText);
-        Button startAgainButton = findViewById(R.id.startAgainButton);
+        Button rematch = findViewById(R.id.startAgainButton);
 
         messageText.setText(message);
 
-        startAgainButton.setOnClickListener(new View.OnClickListener() {
+        rematch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameActivity.restartMatch();
+                //multiplayerGame.restartMatch();
+                singleplayerGame.restartMatch();
                 dismiss();
             }
         });

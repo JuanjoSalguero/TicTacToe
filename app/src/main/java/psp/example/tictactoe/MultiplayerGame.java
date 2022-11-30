@@ -25,7 +25,8 @@ public class MultiplayerGame extends AppCompatActivity {
     private TextView playerOneName, playerTwoName;
     private TextView playerOneScore, playerTwoScore;
     private LinearLayout playerOneLayout, playerTwoLayout;
-    private ImageView buttonImage1, buttonImage2, buttonImage3, buttonImage4, buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9;
+    private ImageView buttonImage1, buttonImage2, buttonImage3, buttonImage4,
+            buttonImage5, buttonImage6, buttonImage7, buttonImage8, buttonImage9;
     private ImageView lock;
 
     protected void onCreate(Bundle savedInstanceState) {
