@@ -11,6 +11,7 @@
         android:roundIcon="@drawable/ico"
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe"
+        android:screenOrientation="portrait"
         tools:targetApi="31" >
         <activity
             android:name=".SPMatchResult"
