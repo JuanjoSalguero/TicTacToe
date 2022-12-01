@@ -160,16 +160,16 @@ public class MultiplayerGame extends AppCompatActivity {
         if (playerTurn == 1) {
             imageView.setImageResource(R.drawable.cross);
             if (checkResults()) {
-                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, playerOneName.getText().toString()
+                MPMatchResult mpm = new MPMatchResult(MultiplayerGame.this, playerOneName.getText().toString()
                         + " has won!", MultiplayerGame.this);
-                resultDialog.setCancelable(false);
-                resultDialog.show();
+                mpm.setCancelable(false);
+                mpm.show();
                 scoreOne++;
                 playerOneScore.setText(Integer.toString(scoreOne));
             } else if(totalSelectedBoxes == 9) {
-                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
-                resultDialog.setCancelable(false);
-                resultDialog.show();
+                MPMatchResult mpm = new MPMatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
+                mpm.setCancelable(false);
+                mpm.show();
             } else {
                 changePlayerTurn(2);
                 totalSelectedBoxes++;
@@ -177,16 +177,16 @@ public class MultiplayerGame extends AppCompatActivity {
         } else {
             imageView.setImageResource(R.drawable.circle);
             if (checkResults()) {
-                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, playerTwoName.getText().toString()
+                MPMatchResult mpm = new MPMatchResult(MultiplayerGame.this, playerTwoName.getText().toString()
                         + " has won!", MultiplayerGame.this);
-                resultDialog.setCancelable(false);
-                resultDialog.show();
+                mpm.setCancelable(false);
+                mpm.show();
                 scoreTwo++;
                 playerTwoScore.setText(Integer.toString(scoreTwo));
             } else if(totalSelectedBoxes == 9) {
-                MatchResult resultDialog = new MatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
-                resultDialog.setCancelable(false);
-                resultDialog.show();
+                MPMatchResult mpm = new MPMatchResult(MultiplayerGame.this, "Match Draw", MultiplayerGame.this);
+                mpm.setCancelable(false);
+                mpm.show();
             } else {
                 changePlayerTurn(1);
                 totalSelectedBoxes++;

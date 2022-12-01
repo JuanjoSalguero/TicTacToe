@@ -51,6 +51,8 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         buttonImage8.setOnClickListener(this);
         buttonImage9.setOnClickListener(this);
 
+        lock = (ImageView)findViewById(R.id.locked);
+
         random = (int)(8 *Math.random()) + 1;
     }
 
@@ -59,151 +61,166 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
 
         boolean pressed = false;
 
-        switch (view.getId()){
-            case R.id.buttonImage1:
-                if (boxPositions[0] == 0){
-                    buttonImage1.setImageResource(R.drawable.cross);
-                    boxPositions[0] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage2:
-                if (boxPositions[1] == 0){
-                    buttonImage2.setImageResource(R.drawable.cross);
-                    boxPositions[1] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage3:
-                if (boxPositions[2] == 0){
-                    buttonImage3.setImageResource(R.drawable.cross);
-                    boxPositions[2] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage4:
-                if (boxPositions[3] == 0){
-                    buttonImage4.setImageResource(R.drawable.cross);
-                    boxPositions[3] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage5:
-                if (boxPositions[4] == 0){
-                    buttonImage5.setImageResource(R.drawable.cross);
-                    boxPositions[4] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage6:
-                if (boxPositions[5] == 0){
-                    buttonImage6.setImageResource(R.drawable.cross);
-                    boxPositions[6] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage7:
-                if (boxPositions[6] == 0){
-                    buttonImage7.setImageResource(R.drawable.cross);
-                    boxPositions[6] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage8:
-                if (boxPositions[7] == 0){
-                    buttonImage8.setImageResource(R.drawable.cross);
-                    boxPositions[7] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-            case R.id.buttonImage9:
-                if (boxPositions[8] == 0){
-                    buttonImage9.setImageResource(R.drawable.cross);
-                    boxPositions[8] = 1;
-                    totalSelectedBoxes++;
-                    pressed = true;
-                }
-                break;
-        }
-
-        if (pressed == true){
-            winner();
-            if (totalSelectedBoxes < 9 && playerWin == false && machineWin == false){
-                machineTurn();
+        if (locked == false){
+            switch (view.getId()){
+                case R.id.buttonImage1:
+                    if (boxPositions[0] == 0){
+                        buttonImage1.setImageResource(R.drawable.cross);
+                        boxPositions[0] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage2:
+                    if (boxPositions[1] == 0){
+                        buttonImage2.setImageResource(R.drawable.cross);
+                        boxPositions[1] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage3:
+                    if (boxPositions[2] == 0){
+                        buttonImage3.setImageResource(R.drawable.cross);
+                        boxPositions[2] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage4:
+                    if (boxPositions[3] == 0){
+                        buttonImage4.setImageResource(R.drawable.cross);
+                        boxPositions[3] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage5:
+                    if (boxPositions[4] == 0){
+                        buttonImage5.setImageResource(R.drawable.cross);
+                        boxPositions[4] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage6:
+                    if (boxPositions[5] == 0){
+                        buttonImage6.setImageResource(R.drawable.cross);
+                        boxPositions[5] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage7:
+                    if (boxPositions[6] == 0){
+                        buttonImage7.setImageResource(R.drawable.cross);
+                        boxPositions[6] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage8:
+                    if (boxPositions[7] == 0){
+                        buttonImage8.setImageResource(R.drawable.cross);
+                        boxPositions[7] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
+                case R.id.buttonImage9:
+                    if (boxPositions[8] == 0){
+                        buttonImage9.setImageResource(R.drawable.cross);
+                        boxPositions[8] = 1;
+                        totalSelectedBoxes++;
+                        pressed = true;
+                    }
+                    break;
             }
-            winner();
-            checkResult();
+            if (pressed == true){
+                winner();
+                if (totalSelectedBoxes < 9 && playerWin == false && machineWin == false){
+                    machineTurn();
+                    winner();
+                }
+                checkResult();
+            }
         }
     }
+
+    // Method wich the machine random plays
     public void machineTurn(){
-        random = (int)(8 *Math.random()) + 1;
-        if (boxPositions[random] == 0){
+        random = (int)(9 * Math.random());
+        if (boxPositions[random] == 0 && totalSelectedBoxes < 9){
             boxPositions[random] = 2;
             switch (random){
                 case 0:
                     buttonImage1.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 1:
                     buttonImage2.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 2:
                     buttonImage3.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 3:
                     buttonImage4.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 4:
                     buttonImage5.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 5:
                     buttonImage6.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 6:
                     buttonImage7.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 7:
                     buttonImage8.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
                     break;
                 case 8:
                     buttonImage9.setImageResource(R.drawable.circle);
+                    totalSelectedBoxes++;
+                    break;
+                default:
                     break;
             }
-        }else
-            machineTurn();
+        }else{
+           machineTurn();
+        }
     }
 
+    // Check the result
     public void checkResult(){
         if (playerWin == true) {
-            MatchResult matchResult = new MatchResult(SingleplayerGame.this, "You"
+            SPMatchResult spm = new SPMatchResult(SingleplayerGame.this, "You"
                     + " has won!", SingleplayerGame.this);
-            matchResult.setCancelable(false);
-            matchResult.show();
+            spm.setCancelable(false);
+            spm.show();
             scorePlayer++;
             playerScore.setText(Integer.toString(scorePlayer));
-        }
-        if (machineWin == true) {
-            MatchResult matchResult = new MatchResult(SingleplayerGame.this, "Machine"
+        } else if (machineWin == true) {
+            SPMatchResult spm = new SPMatchResult(SingleplayerGame.this, "Machine"
                     + " has won!", SingleplayerGame.this);
-            matchResult.setCancelable(false);
-            matchResult.show();
+            spm.setCancelable(false);
+            spm.show();
             scoreMachine++;
             machineScore.setText(Integer.toString(scoreMachine));
-        }
-        if (totalSelectedBoxes == 9){
-            MatchResult resultDialog = new MatchResult(SingleplayerGame.this, "Match Draw", SingleplayerGame.this);
-            resultDialog.setCancelable(false);
-            resultDialog.show();
+        } else if (totalSelectedBoxes == 9){
+            SPMatchResult spm = new SPMatchResult(SingleplayerGame.this, "Match Draw", SingleplayerGame.this);
+            spm.setCancelable(false);
+            spm.show();
         }
     }
 
+    // Method to see if there is a winner
     public void winner(){
         // Player win possibilities
         if (boxPositions[0] == 1 && boxPositions[1] == 1 && boxPositions[2] == 1){
@@ -261,7 +278,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     // Method to restart match
     public void restartMatch(){
         boxPositions = new int[] {0,0,0,0,0,0,0,0,0}; //9 zero
-        totalSelectedBoxes = 1;
+        totalSelectedBoxes = 0;
         playerWin = false;
         machineWin = false;
 
@@ -279,7 +296,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     // Method to reset match
     public void resetMatch(View view){
         boxPositions = new int[] {0,0,0,0,0,0,0,0,0}; //9 zero
-        totalSelectedBoxes = 1;
+        totalSelectedBoxes = 0;
         playerWin = false;
         machineWin = false;
 
@@ -298,7 +315,6 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     public void goBack(View view){
         finish();
     }
-
 
     // Method to lock the match
     public void lockOrUnlock(View view){
