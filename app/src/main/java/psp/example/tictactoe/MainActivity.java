@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 public class MainActivity extends AppCompatActivity {
 
     CheckBox hard;
-    String hardMode = "yes";
+    String hardMode = "no";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void singleplayerGame(View view){
         if (hard.isChecked()){
+            hardMode = "yes";
             Intent intent = new Intent(this, SingleplayerGame.class);
             intent.putExtra("hardMode", hardMode);
             startActivity(intent);
         } else{
             Intent singleMode = new Intent(this, SingleplayerGame.class);
+            hardMode = "no";
+            singleMode.putExtra("hardMode", hardMode);
             startActivity(singleMode);
         }
     }

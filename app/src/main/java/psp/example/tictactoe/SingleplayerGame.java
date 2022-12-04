@@ -156,17 +156,35 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     // Method wich the machine random plays
     public void machineTurn(){
         firstTurn++;
-        if (getHardMode.equals("yes")){
+        if (getHardMode.equals("yes") && firstTurn < 2){
             if (boxPositions[4] == 1 && boxPositions[2] == 0){
                 boxPositions[2] = 2;
                 buttonImage3.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
             }else if (boxPositions[0] == 1 && boxPositions[4] == 0 || boxPositions[2] == 1 && boxPositions[4] == 0 ||
                     boxPositions[6] == 1 && boxPositions[4] == 0 || boxPositions[8] == 1 && boxPositions[4] == 0){
                 boxPositions[4] = 2;
                 buttonImage5.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
+            }else if (boxPositions[1] == 1 && boxPositions[2] == 0){
+                boxPositions[2] = 2;
+                buttonImage3.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
+            }else if (boxPositions[5] == 1 && boxPositions[8] == 0){
+                boxPositions[8] = 2;
+                buttonImage9.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
+            }else if (boxPositions[7] == 1 && boxPositions[8] == 0){
+                boxPositions[8] = 2;
+                buttonImage9.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
+            }else if (boxPositions[3] == 1 && boxPositions[6] == 0){
+                boxPositions[6] = 2;
+                buttonImage7.setImageResource(R.drawable.circle);
+                totalSelectedBoxes++;
             }
         }
-        if (firstTurn >= 2){
+        if (firstTurn >= 2 || getHardMode.equals("no")){
             random = (int)(9 * Math.random());
             if (boxPositions[random] == 0 && totalSelectedBoxes < 9){
                 boxPositions[random] = 2;
