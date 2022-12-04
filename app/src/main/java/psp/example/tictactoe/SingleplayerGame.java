@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SingleplayerGame extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,6 +17,9 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     private int scorePlayer = 0;
     private int scoreMachine = 0;
     private int random;
+    private String getHardMode;
+    public int firstTurn = 0;
+
 
     private TextView playerScore, machineScore;
     private ImageView buttonImage1, buttonImage2, buttonImage3, buttonImage4,
@@ -27,6 +31,8 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singleplayer_game);
+
+        getHardMode = getIntent().getStringExtra("hardMode");
 
         playerScore = findViewById(R.id.playerScore);
         machineScore = findViewById(R.id.machineScore);
@@ -149,51 +155,64 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
 
     // Method wich the machine random plays
     public void machineTurn(){
-        random = (int)(9 * Math.random());
-        if (boxPositions[random] == 0 && totalSelectedBoxes < 9){
-            boxPositions[random] = 2;
-            switch (random){
-                case 0:
-                    buttonImage1.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 1:
-                    buttonImage2.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 2:
-                    buttonImage3.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 3:
-                    buttonImage4.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 4:
-                    buttonImage5.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 5:
-                    buttonImage6.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 6:
-                    buttonImage7.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 7:
-                    buttonImage8.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                case 8:
-                    buttonImage9.setImageResource(R.drawable.circle);
-                    totalSelectedBoxes++;
-                    break;
-                default:
-                    break;
+        firstTurn++;
+        if (getHardMode.equals("yes")){
+            if (boxPositions[4] == 1 && boxPositions[2] == 0){
+                boxPositions[2] = 2;
+                buttonImage3.setImageResource(R.drawable.circle);
+            }else if (boxPositions[0] == 1 && boxPositions[4] == 0 || boxPositions[2] == 1 && boxPositions[4] == 0 ||
+                    boxPositions[6] == 1 && boxPositions[4] == 0 || boxPositions[8] == 1 && boxPositions[4] == 0){
+                boxPositions[4] = 2;
+                buttonImage5.setImageResource(R.drawable.circle);
             }
-        }else{
-           machineTurn();
+        }
+        if (firstTurn >= 2){
+            random = (int)(9 * Math.random());
+            if (boxPositions[random] == 0 && totalSelectedBoxes < 9){
+                boxPositions[random] = 2;
+                switch (random){
+                    case 0:
+                        buttonImage1.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 1:
+                        buttonImage2.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 2:
+                        buttonImage3.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 3:
+                        buttonImage4.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 4:
+                        buttonImage5.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 5:
+                        buttonImage6.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 6:
+                        buttonImage7.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 7:
+                        buttonImage8.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    case 8:
+                        buttonImage9.setImageResource(R.drawable.circle);
+                        totalSelectedBoxes++;
+                        break;
+                    default:
+                        break;
+                }
+            }else{
+                machineTurn();
+            }
         }
     }
 
@@ -281,6 +300,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         totalSelectedBoxes = 0;
         playerWin = false;
         machineWin = false;
+        firstTurn = 0;
 
         buttonImage1.setImageResource(R.drawable.reset_box);
         buttonImage2.setImageResource(R.drawable.reset_box);
@@ -299,6 +319,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         totalSelectedBoxes = 0;
         playerWin = false;
         machineWin = false;
+        firstTurn = 0;
 
         buttonImage1.setImageResource(R.drawable.reset_box);
         buttonImage2.setImageResource(R.drawable.reset_box);
