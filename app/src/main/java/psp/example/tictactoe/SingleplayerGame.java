@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 public class SingleplayerGame extends AppCompatActivity implements View.OnClickListener {
 
+    // Variables
     private int [] boxPositions = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int totalSelectedBoxes = 0;
     private boolean locked = false;
@@ -62,6 +63,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         random = (int)(8 *Math.random()) + 1;
     }
 
+    // Method to put a cross on the clicked imageview
     @Override
     public void onClick(View view) {
 
@@ -153,9 +155,10 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    // Method wich the machine random plays
+    // Method which the machine plays randomly
     public void machineTurn(){
         firstTurn++;
+        // When hardMode is selected
         if (getHardMode.equals("yes") && firstTurn < 2){
             if (boxPositions[4] == 1 && boxPositions[2] == 0){
                 boxPositions[2] = 2;
@@ -184,6 +187,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                 totalSelectedBoxes++;
             }
         }
+        // HardMode second part and hardMode not selected
         if (firstTurn >= 2 || getHardMode.equals("no")){
             random = (int)(9 * Math.random());
             if (boxPositions[random] == 0 && totalSelectedBoxes < 9){
@@ -234,7 +238,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    // Check the result
+    // Check the match result
     public void checkResult(){
         if (playerWin == true) {
             SPMatchResult spm = new SPMatchResult(SingleplayerGame.this, "You"
@@ -257,7 +261,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    // Method to see if there is a winner
+    // Method to see if there is a winner depending on the possibles combinations
     public void winner(){
         // Player win possibilities
         if (boxPositions[0] == 1 && boxPositions[1] == 1 && boxPositions[2] == 1){
@@ -350,20 +354,20 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         buttonImage9.setImageResource(R.drawable.reset_box);
     }
 
-    // Method to go back
+    // Method to go back to main activity
     public void goBack(View view){
         finish();
     }
 
-    // Method to lock the match
+    // Method to lock or unlock the match
     public void lockOrUnlock(View view){
         if (locked == false) {
             locked = true;
-            lock.setImageResource(R.drawable.unlocked);
+            lock.setImageResource(R.drawable.locked);
         }
         else{
             locked = false;
-            lock.setImageResource(R.drawable.locked);
+            lock.setImageResource(R.drawable.unlocked);
         }
     }
 }

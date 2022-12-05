@@ -92,7 +92,7 @@
         android:layout_toRightOf="@+id/reset"
         android:contentDescription="Lock screen"
         android:onClick="lockOrUnlock"
-        app:srcCompat="@drawable/locked">
+        app:srcCompat="@drawable/unlocked">
 
     </ImageView>
 

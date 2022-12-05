@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 public class MPMatchResult extends Dialog {
 
+    // Variables
     private final String message;
     private final MultiplayerGame multiplayerGame;
 
+    // Constructor
     public MPMatchResult(@NonNull Context context, String message, MultiplayerGame multiplayerGame) {
         super(context);
         this.message = message;
@@ -28,8 +30,10 @@ public class MPMatchResult extends Dialog {
         TextView messageText = findViewById(R.id.messageText);
         Button rematch = findViewById(R.id.startAgainButton);
 
+        // Set a message to the alert
         messageText.setText(message);
 
+        // Listener to restart the match
         rematch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

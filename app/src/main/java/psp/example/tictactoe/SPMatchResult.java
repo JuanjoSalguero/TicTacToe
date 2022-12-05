@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 public class SPMatchResult extends Dialog {
 
+    // Variables
     private final String message;
     private final SingleplayerGame singleplayerGame;
 
+    // Constructor
     public SPMatchResult(@NonNull Context context, String message, SingleplayerGame singleplayerGame) {
         super(context);
         this.message = message;
@@ -28,8 +30,10 @@ public class SPMatchResult extends Dialog {
         TextView messageText = findViewById(R.id.messageText);
         Button rematch = findViewById(R.id.startAgainButton);
 
+        // Set a message to the alert
         messageText.setText(message);
 
+        // Listener to restart the match
         rematch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

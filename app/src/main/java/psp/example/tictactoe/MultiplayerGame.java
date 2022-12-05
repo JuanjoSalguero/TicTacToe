@@ -14,6 +14,7 @@ import java.util.List;
 
 public class MultiplayerGame extends AppCompatActivity {
 
+    // Variables
     private final List<int[]> combinationList = new ArrayList<>();
     private int [] boxPositions = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     private int playerTurn = 1;
@@ -63,13 +64,15 @@ public class MultiplayerGame extends AppCompatActivity {
         combinationList.add(new int[] {2,4,6});
         combinationList.add(new int[] {0,4,8});
 
+        // Getting the players names
         String getPlayerOneName = getIntent().getStringExtra("playerOne");
         String getPlayerTwoName = getIntent().getStringExtra("playerTwo");
 
+        // Setting the players names
         playerOneName.setText(getPlayerOneName);
         playerTwoName.setText(getPlayerTwoName);
 
-
+        // Listeners for image buttons clicks
         buttonImage1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,6 +156,7 @@ public class MultiplayerGame extends AppCompatActivity {
 
     }
 
+    // Method to check if there is a winner, it is draw or to change player turn
     private void performAction(ImageView  imageView, int selectedBoxPosition) {
 
         boxPositions[selectedBoxPosition] = playerTurn;
@@ -194,6 +198,7 @@ public class MultiplayerGame extends AppCompatActivity {
         }
     }
 
+    // Method to change the player turn
     private void changePlayerTurn(int currentPlayerTurn) {
         playerTurn = currentPlayerTurn;
         if (playerTurn == 1) {
@@ -205,6 +210,7 @@ public class MultiplayerGame extends AppCompatActivity {
         }
     }
 
+    // Method to check de combinations to know if someone win
     private boolean checkResults(){
         boolean response = false;
         for (int i = 0; i < combinationList.size(); i++){
@@ -217,6 +223,7 @@ public class MultiplayerGame extends AppCompatActivity {
         return response;
     }
 
+    // Method to know if a imageview is selectable
     private boolean isBoxSelectable(int boxPosition){
 
         boolean response = false;
@@ -262,20 +269,20 @@ public class MultiplayerGame extends AppCompatActivity {
         buttonImage9.setImageResource(R.drawable.reset_box);
     }
 
-    // Method to go back
+    // Method to go back to main activity
     public void goBack(View view){
         finish();
     }
 
-    // Method to lock the match
+    // Method to lock or unlock the match
     public void lockOrUnlock(View view){
         if (locked == false) {
             locked = true;
-            lock.setImageResource(R.drawable.unlocked);
+            lock.setImageResource(R.drawable.locked);
         }
         else{
             locked = false;
-            lock.setImageResource(R.drawable.locked);
+            lock.setImageResource(R.drawable.unlocked);
         }
     }
 }
