@@ -73,7 +73,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
             switch (view.getId()){
                 case R.id.buttonImage1:
                     if (boxPositions[0] == 0){
-                        buttonImage1.setImageResource(R.drawable.cross);
+                        buttonImage1.setImageResource(R.drawable.person);
                         boxPositions[0] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -81,7 +81,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage2:
                     if (boxPositions[1] == 0){
-                        buttonImage2.setImageResource(R.drawable.cross);
+                        buttonImage2.setImageResource(R.drawable.person);
                         boxPositions[1] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -89,7 +89,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage3:
                     if (boxPositions[2] == 0){
-                        buttonImage3.setImageResource(R.drawable.cross);
+                        buttonImage3.setImageResource(R.drawable.person);
                         boxPositions[2] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -97,7 +97,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage4:
                     if (boxPositions[3] == 0){
-                        buttonImage4.setImageResource(R.drawable.cross);
+                        buttonImage4.setImageResource(R.drawable.person);
                         boxPositions[3] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -105,7 +105,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage5:
                     if (boxPositions[4] == 0){
-                        buttonImage5.setImageResource(R.drawable.cross);
+                        buttonImage5.setImageResource(R.drawable.person);
                         boxPositions[4] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -113,7 +113,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage6:
                     if (boxPositions[5] == 0){
-                        buttonImage6.setImageResource(R.drawable.cross);
+                        buttonImage6.setImageResource(R.drawable.person);
                         boxPositions[5] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -121,7 +121,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage7:
                     if (boxPositions[6] == 0){
-                        buttonImage7.setImageResource(R.drawable.cross);
+                        buttonImage7.setImageResource(R.drawable.person);
                         boxPositions[6] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -129,7 +129,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage8:
                     if (boxPositions[7] == 0){
-                        buttonImage8.setImageResource(R.drawable.cross);
+                        buttonImage8.setImageResource(R.drawable.person);
                         boxPositions[7] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -137,7 +137,7 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                     break;
                 case R.id.buttonImage9:
                     if (boxPositions[8] == 0){
-                        buttonImage9.setImageResource(R.drawable.cross);
+                        buttonImage9.setImageResource(R.drawable.person);
                         boxPositions[8] = 1;
                         totalSelectedBoxes++;
                         pressed = true;
@@ -162,28 +162,28 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
         if (getHardMode.equals("yes") && firstTurn < 2){
             if (boxPositions[4] == 1 && boxPositions[2] == 0){
                 boxPositions[2] = 2;
-                buttonImage3.setImageResource(R.drawable.circle);
+                buttonImage3.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }else if (boxPositions[0] == 1 && boxPositions[4] == 0 || boxPositions[2] == 1 && boxPositions[4] == 0 ||
                     boxPositions[6] == 1 && boxPositions[4] == 0 || boxPositions[8] == 1 && boxPositions[4] == 0){
                 boxPositions[4] = 2;
-                buttonImage5.setImageResource(R.drawable.circle);
+                buttonImage5.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }else if (boxPositions[1] == 1 && boxPositions[2] == 0){
                 boxPositions[2] = 2;
-                buttonImage3.setImageResource(R.drawable.circle);
+                buttonImage3.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }else if (boxPositions[5] == 1 && boxPositions[8] == 0){
                 boxPositions[8] = 2;
-                buttonImage9.setImageResource(R.drawable.circle);
+                buttonImage9.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }else if (boxPositions[7] == 1 && boxPositions[8] == 0){
                 boxPositions[8] = 2;
-                buttonImage9.setImageResource(R.drawable.circle);
+                buttonImage9.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }else if (boxPositions[3] == 1 && boxPositions[6] == 0){
                 boxPositions[6] = 2;
-                buttonImage7.setImageResource(R.drawable.circle);
+                buttonImage7.setImageResource(R.drawable.android);
                 totalSelectedBoxes++;
             }
         }
@@ -194,39 +194,39 @@ public class SingleplayerGame extends AppCompatActivity implements View.OnClickL
                 boxPositions[random] = 2;
                 switch (random){
                     case 0:
-                        buttonImage1.setImageResource(R.drawable.circle);
+                        buttonImage1.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 1:
-                        buttonImage2.setImageResource(R.drawable.circle);
+                        buttonImage2.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 2:
-                        buttonImage3.setImageResource(R.drawable.circle);
+                        buttonImage3.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 3:
-                        buttonImage4.setImageResource(R.drawable.circle);
+                        buttonImage4.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 4:
-                        buttonImage5.setImageResource(R.drawable.circle);
+                        buttonImage5.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 5:
-                        buttonImage6.setImageResource(R.drawable.circle);
+                        buttonImage6.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 6:
-                        buttonImage7.setImageResource(R.drawable.circle);
+                        buttonImage7.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 7:
-                        buttonImage8.setImageResource(R.drawable.circle);
+                        buttonImage8.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     case 8:
-                        buttonImage9.setImageResource(R.drawable.circle);
+                        buttonImage9.setImageResource(R.drawable.android);
                         totalSelectedBoxes++;
                         break;
                     default:

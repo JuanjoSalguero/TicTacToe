@@ -56,4 +56,14 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    public void information(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("TicTacToe Android game" +
+                " designed and developed by Juanjo Salguero ®️.")
+                .setPositiveButton("Close", (dialogInterface, i) -> dialogInterface.cancel());
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }
